@@ -2,12 +2,15 @@ import React, {useEffect, useState} from 'react';
 import {ProfileInline} from "../profile-inline/profile-inline";
 import "./navigation-menu.scss"
 import {NavigationMenuService} from "../../../services/navigation-menu.service";
+import i18next from "i18next";
+import {useHistory} from "react-router-dom";
 
 let loaded = false;
 
 export const NavigationMenu = (props) => {
     // Объявление переменной состояния, которую мы назовём "count"
     const [navigationMenu, setNavigationMenu] = useState([]);
+    const history = useHistory();
 
     const getMenu = event => {
         NavigationMenuService.getMainList()
@@ -26,6 +29,12 @@ export const NavigationMenu = (props) => {
         loaded = !loaded ? getMenu() : loaded;
     }, []);
 
+    const clickItem = (item)=>{
+        console.log(item);
+        debugger;
+        //history.push(item)
+    }
+
     return (
         <div className="layout-menu-container">
             <div className="menu-scroll-content">
@@ -36,9 +45,10 @@ export const NavigationMenu = (props) => {
                         return <li
                             key={item.id || index}
                             className="nav-item">
-                            <a className="nav-item-link">
+                            <a className="nav-item-link"
+                               onClick={clickItem}>
                                 <i className="fa fa-fw "></i>
-                                <span>{item.title}</span>
+                                <span>{i18next.t(item.title)}</span>
                                 <i className="fa fa-fw fa-angle-down menuitem-toggle-icon "></i>
                             </a>
                             <div className=" submenu-arrow "></div>

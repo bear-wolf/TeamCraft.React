@@ -1,12 +1,9 @@
 import React, {Component} from 'react';
 import './App.css';
 import { Provider } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 
-import configureStore from './redux/configureStore';
-import signUp from "./pages/signUp";
 
-//const store = configureStore();
 class App extends Component {
     state = {
         email: '',

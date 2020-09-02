@@ -9,6 +9,10 @@ export class AuthService {
         return API.post('login', model);
     }
 
+    static signUp = (model) => {
+        return API.post('registration', model);
+    }
+
     static logOut = () => {
         return API.get('logout');
     }

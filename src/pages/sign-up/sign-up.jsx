@@ -4,36 +4,59 @@ import './sign-up.scss'
 import {Anonymous} from "../../components/anonymous/anonymous";
 import {PersonalData} from "../../components/personal-data/personal-data";
 import i18next from "i18next";
+import {PrivateData} from "../../components/private-data/private-data";
+import {AuthService} from "../../services/auth.service";
 
-export class SignUp extends React.Component {
-    render() {
-        return <Anonymous>
-                <div className="sign-up-content">
-                    <div className="container-fluid">
-                        <div className="container">
+const step = 0;
 
-                            <div className="content-body">
-                                <div>
-                                    <div className="row step1-content">
-                                        <div className="col-lg-12">
-                                            <h1 className="title"
-                                                translate>{i18next.t('authSignUpHeader')}</h1>
-                                            <PersonalData props={this.props}></PersonalData>
-                                        </div>
-                                    </div>
+export const SignUp = (props) => {
 
-                                    <div className="row step2-content">
-                                        <div className="col-lg-12">
-                                            <h1 className="title"
-                                                translate>{i18next.t('authSignUpHeader')}</h1>
-                                            app-private-data
-                                        </div>
-                                    </div>
-                                </div>
+    const submitFirstStep = (data)=>{
+        AuthService.signUp(data)
+            .then((item)=>{
+                debugger;
+            })
+            .catch((item)=>{
+                console.log('error', item)
+            })
+    }
+    const submitLastStep = (data)=>{
+        debugger;
+    }
+
+    const firstStep = () => {
+        return <div className="row step1-content">
+            <div className="col-lg-12">
+                <h1 className="title"
+                    translate>{i18next.t('authSignUpHeader')}</h1>
+                <PersonalData {...props} submit={submitFirstStep}></PersonalData>
+            </div>
+        </div>
+    }
+
+    const lastStep = () => {
+        return <div className="row step2-content">
+            <div className="col-lg-12">
+                <h1 className="title"
+                    translate>{i18next.t('authSignUpHeader')}</h1>
+                <PrivateData {...props} submit={submitLastStep}></PrivateData>
+            </div>
+        </div>
+    }
+
+    return (<Anonymous>
+            <div className="sign-up-content">
+                <div className="container-fluid">
+                    <div className="container">
+
+                        <div className="content-body">
+                            <div>
+                                {step === 0 ? firstStep() : lastStep()}
                             </div>
                         </div>
                     </div>
                 </div>
-            </Anonymous>
-    }
+            </div>
+        </Anonymous>
+    )
 }

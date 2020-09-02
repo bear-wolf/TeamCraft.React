@@ -38,7 +38,8 @@ code {
 form.submitted input.error{
   border: 1px solid red!important;
 }
-form.submitted div.error{
+form.submitted div.error,
+form div.error{
   display: flex!important;
 }
 form .error{

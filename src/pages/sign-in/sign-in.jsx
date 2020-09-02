@@ -10,34 +10,23 @@ import {StorageService} from "../../services/storage.service";
 
 export const SignIn = (props) => {
 
+    const [error, setError] = useState({})
     const [state, setState] = useState({
         username: "",
         password: "",
         touchedBtn: false,
         validate: {
-            username: [
-                {required: Validation.required},
-                {email: Validation.email}
-            ],
-            password: [
-                {required: Validation.required}
-            ]
+            username: {
+                required: Validation.required,
+                email: Validation.email
+            },
+            password: {required: Validation.required}
         }
     });
 
-    // async componentDidMount() {
-    //     // Load async data.
-    //     // console.log('componentDidMount sign in')
-    //     // let data = await API.get('/');
-    //     // console.log(data);
-    //     //
-    //     // data = data.data.results[0]; //// Парсим резульатты.
-    //     // //const name = `${userData.name.first} ${userData.name.last}`;
-    // }
-
     useEffect((event) => {
         console.log('useEffect', event);
-    }, [ state.username]);
+    }, [state.username]);
 
     const onChangeEmail = (json) => {
         state.username = json.email;
@@ -69,7 +58,7 @@ export const SignIn = (props) => {
 
                     StorageService.setAuth(JSON.stringify(auth));
                     StorageService.setToken(auth.token);
-                    window.location.href ='/';
+                    window.location.href = '/';
 
                     console.log(res);
                 })
@@ -80,23 +69,26 @@ export const SignIn = (props) => {
     const isValid = () => {
         let value = true;
 
-        return true;
-
-        let state = this.state;
-        let fields = this.state.validate;
-
-        for (let key of Object.keys(fields)) {
-            let name = Object.keys(fields[key][0])[0];
-            let error = fields[key][name](name, state.value);
-
+        for (let key of Object.keys(state.validate)) {
+            let error = Validation.run(state.validate[key], state[key]);
             if (error) {
                 value = false;
-                state.errors[name] = error[name];
-                setState(state);
+                setError({
+                    [key]: error
+                })
             }
         }
 
         return value;
+    }
+
+    const getError = (field) => {
+        {
+            Object.keys(field || {}).map((item, index) => {
+                console.log('error', field[item]);
+                return <div className={'error'}>{field[item]}</div>
+            })
+        }
     }
 
     let formClass = '';
@@ -121,7 +113,7 @@ export const SignIn = (props) => {
                                     //validateStatus={state.touchedBtn}
                                     //validateRules={state.validate.username}
                                                   onChange={onChangeEmail}></FormControlInput>
-                                {/*{state.errors.username && <div className={'error'}>{state.errors.username}</div>}*/}
+                                {getError(error.username)}
                             </div>
                         </div>
                         <div className="row">
@@ -132,17 +124,9 @@ export const SignIn = (props) => {
                                     //validateStatus={state.touchedBtn}
                                                   onChange={onChangePassword}
                                                   value={state.password}></FormControlInput>
+                                {getError(error.password)}
                             </div>
                         </div>
-
-                        {/*<div className="row">*/}
-                        {/*    <div className="col-12">*/}
-                        {/*        <FormControlSelect*/}
-                        {/*            label='list'*/}
-                        {/*            onChange={this.onChangeSelect}*/}
-                        {/*            value={state.list}></FormControlSelect>*/}
-                        {/*    </div>*/}
-                        {/*</div>*/}
 
                         <div className="row">
                             <div className="col-12">

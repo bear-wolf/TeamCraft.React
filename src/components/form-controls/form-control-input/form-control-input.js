@@ -93,7 +93,7 @@ FormControlInput.propTypes = {
     value: PropTypes.string.isRequired,
     type: PropTypes.string,
     name: PropTypes.string.isRequired,
-    validateStatus: PropTypes.bool.isRequired,
-    validateRules: PropTypes.array,
+    // validateStatus: PropTypes.bool.isRequired,
+    // validateRules: PropTypes.array,
     placeholder: PropTypes.string
 }

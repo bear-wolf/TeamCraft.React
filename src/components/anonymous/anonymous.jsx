@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import { useHistory } from 'react-router-dom';
 import './anonymous.scss'
 import {SystemService} from "../../services/system.service";
 import {StorageService} from "../../services/storage.service";
@@ -7,6 +8,7 @@ let loaded = false;
 
 export const Anonymous = (props) => {
     const [background, setBackground] = useState('');
+    const history = useHistory();
 
     useEffect((event) => {
         loaded = !loaded ? getParams() : loaded;
@@ -31,7 +33,9 @@ export const Anonymous = (props) => {
 
                 setBackground(auth.background);
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+                history.push('/sign-in');
+            });
 
         return true;
     }

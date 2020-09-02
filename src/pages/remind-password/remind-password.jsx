@@ -20,7 +20,7 @@ export class RemindPassword extends React.Component {
     onChangeField(json) {
         let state = this.state;
 
-        state['email'] = json.email; debugger
+        state['email'] = json.email;
 
         this.setState(state);
     }

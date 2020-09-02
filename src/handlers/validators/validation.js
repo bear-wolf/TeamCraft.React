@@ -26,4 +26,19 @@ export class Validation{
 
         return error;
     }
+
+    static run = (rules, value) =>{
+        let status = null;
+
+        for (let name of Object.keys(rules || {})) {
+            let error = rules[name](name, value);
+
+            if (error) {
+                status = {
+                    [name] : error[name]
+                }
+            }
+        }
+        return status;
+    }
 }

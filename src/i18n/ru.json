@@ -1,5 +1,6 @@
 {
   "authHeader": "Авторизация",
   "formTitleEmail": "Email",
-  "formTitlePassword": "Password"
+  "formTitlePassword": "Password",
+  "fio": "Фамилия, имя, отчество"
 }

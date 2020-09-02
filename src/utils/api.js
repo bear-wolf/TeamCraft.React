@@ -37,7 +37,7 @@ _axios.interceptors.request
             }
 
             const token = StorageService.getToken();
-            console.log('interceptors', token)
+            // console.log('interceptors', token)
             if (token) {
                 config.headers['Authorization'] = 'Bearer ' + token;
             }

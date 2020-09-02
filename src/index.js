@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {BrowserRouter, Route, Router, Switch} from "react-router-dom";
 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './assets/css/style.scss';
@@ -16,6 +16,7 @@ import {SignUp} from "./pages/sign-up/sign-up";
 import {RemindPassword} from "./pages/remind-password/remind-password";
 import Test from "./test";
 import {PersonalUser} from "./pages/personal-user/personal-user";
+import history from './handlers/history';
 
 Localization.initI18();
 
