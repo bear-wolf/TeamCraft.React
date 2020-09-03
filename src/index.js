@@ -31,9 +31,8 @@ ReactDOM.render(
             <Route path="/sign-up" component={SignUp} appProps={{isAnonymous}}/>
             <Route path="/remind-password" component={RemindPassword} appProps={{isAnonymous}}/>
             <Route exact path="/test" component={Test} />
-
             <GuardRoute path="/" component={LayOut} appProps={{isAuthenticated}} />
-            <GuardRoute path="/personal-user" component={PersonalUser} appProps={{isAuthenticated}} />
+
             <Route component={NotFound}/>
         </Switch>
     </BrowserRouter>,

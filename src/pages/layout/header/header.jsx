@@ -25,7 +25,7 @@ export const Header = (props) => {
     return (
         <div className="topbar clearfix">
             <div className="topbar-left">
-                <a href={''}>
+                <a onClick={event => history.push('/')}>
                     <img className="logo-type" src={state.logoType}/>
                 </a>
             </div>

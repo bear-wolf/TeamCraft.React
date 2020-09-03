@@ -2,6 +2,44 @@ html {
   height: 100%;
 }
 
+.card h1 {
+  font-size: 20px;
+  font-weight: 400;
+  margin: 24px 0;
+}
+
+.card {
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  background: #ffffff;
+  padding: 16px;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+}
+.card.card-w-title {
+  padding-bottom: 16px;
+}
+.card.no-gutter {
+  margin-bottom: 0;
+}
+
+.card h1:first-child {
+  margin-top: 0px;
+}
+.card h2 {
+  font-size: 18px;
+  font-weight: 400;
+}
+.card h3 {
+  font-size: 16px;
+  font-weight: 400;
+}
+.card h4 {
+  font-size: 14px;
+  font-weight: 400;
+}
+
 
 .full-page {
   display: flex;

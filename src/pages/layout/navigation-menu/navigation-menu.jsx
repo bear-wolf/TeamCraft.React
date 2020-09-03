@@ -4,6 +4,7 @@ import "./navigation-menu.scss"
 import {NavigationMenuService} from "../../../services/navigation-menu.service";
 import i18next from "i18next";
 import {useHistory} from "react-router-dom";
+import {NavigationType} from "./navigation.type";
 
 let loaded = false;
 
@@ -29,10 +30,14 @@ export const NavigationMenu = (props) => {
         loaded = !loaded ? getMenu() : loaded;
     }, []);
 
-    const clickItem = (item)=>{
-        console.log(item);
-        debugger;
-        //history.push(item)
+    const clickItem = (item) => {
+        //console.log(item);
+        history.push(item.route || '');
+    }
+
+    const getIconClass = (item) => {
+        NavigationType[item.name](item);
+        return item.icon || '';
     }
 
     return (
@@ -46,8 +51,8 @@ export const NavigationMenu = (props) => {
                             key={item.id || index}
                             className="nav-item">
                             <a className="nav-item-link"
-                               onClick={clickItem}>
-                                <i className="fa fa-fw "></i>
+                               onClick={event => clickItem(item)}>
+                                <i className={'fa fa-fw ' + getIconClass(item)}></i>
                                 <span>{i18next.t(item.title)}</span>
                                 <i className="fa fa-fw fa-angle-down menuitem-toggle-icon "></i>
                             </a>

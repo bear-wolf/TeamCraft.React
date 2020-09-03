@@ -3,6 +3,7 @@
 @import "./../../assets/css/template_theme";
 
 body {
+  background-color: #EEF2F6;
 
   .layout {
     position: relative;
@@ -276,7 +277,7 @@ body {
 .layout-wrapper .layout-menu li a i.menuitem-toggle-icon {
   float: right;
   font-size: 16px;
-  margin-top: 2px;
+  margin-top: 5px;
   margin-right: -3px;
   -moz-transition: transform 0.3s;
   -o-transition: transform 0.3s;
