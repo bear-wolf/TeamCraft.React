@@ -17,8 +17,6 @@ export const NavigationMenu = (props) => {
         NavigationMenuService.getMainList()
             .then(res => {
                 setNavigationMenu(res.data.data)
-
-                console.log(res['data']['data'])
                 //setState(state);
             })
             .catch(err => console.log(err));

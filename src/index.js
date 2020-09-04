@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
-import {BrowserRouter, Route, Router, Switch} from "react-router-dom";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './assets/css/style.scss';
@@ -15,8 +15,10 @@ import GuardRoute from "./guard/guard-route";
 import {SignUp} from "./pages/sign-up/sign-up";
 import {RemindPassword} from "./pages/remind-password/remind-password";
 import Test from "./test";
-import {PersonalUser} from "./pages/personal-user/personal-user";
-import history from './handlers/history';
+
+import { Provider } from 'react-redux'
+import store from "./store/store";
+
 
 Localization.initI18();
 
@@ -26,15 +28,17 @@ const isAnonymous = !isAuthenticated
 
 ReactDOM.render(
     <BrowserRouter>
-        <Switch>
-            <Route path="/sign-in" component={SignIn} appProps={{isAnonymous}}/>
-            <Route path="/sign-up" component={SignUp} appProps={{isAnonymous}}/>
-            <Route path="/remind-password" component={RemindPassword} appProps={{isAnonymous}}/>
-            <Route exact path="/test" component={Test} />
-            <GuardRoute path="/" component={LayOut} appProps={{isAuthenticated}} />
+        <Provider store={store}>
+            <Switch>
+                <Route path="/sign-in" component={SignIn} appProps={{isAnonymous}}/>
+                <Route path="/sign-up" component={SignUp} appProps={{isAnonymous}}/>
+                <Route path="/remind-password" component={RemindPassword} appProps={{isAnonymous}}/>
+                <Route exact path="/test" component={Test}/>
+                <GuardRoute path="/" component={LayOut} appProps={{isAuthenticated}}/>
 
-            <Route component={NotFound}/>
-        </Switch>
+                <Route component={NotFound}/>
+            </Switch>
+        </Provider>
     </BrowserRouter>,
     document.getElementById('root')
 );
