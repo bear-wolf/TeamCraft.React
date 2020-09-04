@@ -1,10 +1,10 @@
-import LanguageChange from '../actions/language';
-import state from './../state'
+import {GET_LANGUAGE, SET_LANGUAGE} from '../constans/language';
+import originalState from './../state'
 
-export default function language(state, action) {
+export default function language(state = originalState.language, action) {
     switch(action.type) {
-        case LanguageChange: return action.language;
-        //case LanguageChange: return action.language;
+        case GET_LANGUAGE: return state;
+        case SET_LANGUAGE: return action.payload;
 
         default: return state;
     }

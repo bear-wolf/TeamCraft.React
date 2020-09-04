@@ -4,6 +4,6 @@ import simple from './simple';
 import counter from './counter';
 
 export default combineReducers({
-    //language,
+    language,
     counter
 });
