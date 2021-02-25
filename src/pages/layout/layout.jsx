@@ -16,21 +16,21 @@ export const LayOut = (props) => {
     const state = store.getState();
     const dispatch = useDispatch();
 
-    const language = useSelector(state => state.language, (item, previousItem) => {
-        debugger
-        console.log('old')
-        console.log(previousItem)
-        console.log('new')
-        console.log(item)
-        // if (item.length === previousItem.length) {
-        //     console.log('Equal')
-        //     return true
-        // } else {
-        //     console.log('Not Equal')
-        //     return false
-        // }
-        return true;
-    })
+    // const language = useSelector(state => state.language, (item, previousItem) => {
+    //     debugger
+    //     console.log('old')
+    //     console.log(previousItem)
+    //     console.log('new')
+    //     console.log(item)
+    //     // if (item.length === previousItem.length) {
+    //     //     console.log('Equal')
+    //     //     return true
+    //     // } else {
+    //     //     console.log('Not Equal')
+    //     //     return false
+    //     // }
+    //     return true;
+    // })
 
     // props.dispatch({ type: 'SetLanguage' })
     //dispatch(setLanguage('en'));
