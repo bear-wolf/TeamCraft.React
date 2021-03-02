@@ -11,8 +11,23 @@ docker rm $(docker ps -a -q)
 // List of images
 docker images
 
+# My configuration
+  - add tag  ## docker tag lomobile:latest lomobile:lomobile
+  - docker container ls #get list of containers
+  - docker create <name> ## created an image of project
+  - docker image push <tag name> ## push to hub.docker repository
+  - docker login -u "<your userId>" -p "<your password>" docker.io   ##auth of docker
+
 # Build
-  docker build --tag lomobile .  //create a image from current project
+  docker build --tag <name> <relative path of directory>  //create a image from current project
+
+# Steps to reproduce the behavior
+git clone https://github.com/docker-teamcenter/tc-common/blob/master/Dockerfile
+docker build -t tc-common .
+docker tag <container-id> drewmullen/tc-common
+docker login (successful)
+docker push drewmullen/tc-common
+
 
 # Options
 --config string      Location of client config files (default "/home/andrew/.docker")
