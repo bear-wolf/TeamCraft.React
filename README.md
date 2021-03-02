@@ -12,6 +12,7 @@ docker rm $(docker ps -a -q)
 docker images
 
 # Build
+  docker build --tag lomobile .  //create a image from current project
 
 # Options
 --config string      Location of client config files (default "/home/andrew/.docker")
